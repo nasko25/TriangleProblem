@@ -32,6 +32,28 @@ public class TriangleProblem {
 		return ALLtriangleCount;
 	}
 	
+	public static long PossibleTrianglesCount(char oneD[]) {
+		long PossibleTriangles = 0;
+		int space = WIDTH - 1;
+		for (int i = 0; i < oneD.length; i ++){
+			for (int j = 0; j < oneD.length; j++){
+				for (int l = 0; l < oneD.length; l++) {
+					if (i!=j&&i!=l&&j!=l) {
+						if(Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space) {
+							for (Line line : Line.lines){
+							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
+							// if so PossibleTriangles++;
+							continue; }
+						}
+					}
+				}
+			}
+			if (space ==0) {space = WIDTH-1;}
+			else{space--;}
+		}
+		return PossibleTriangles;
+	}
+	
 	private static char[] ConvertTo1D(char co[][]) {
 		int c = 0;
 		char[] oneD = new char[HEIGHT*WIDTH];
