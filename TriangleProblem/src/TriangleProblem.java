@@ -1,4 +1,3 @@
-
 public class TriangleProblem {
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
@@ -28,8 +27,14 @@ public class TriangleProblem {
 			if (space ==0) {space = WIDTH-1;}
 			else{space--;}
 		}
-		// TODO make this ^ do the same but in the opposite direction	
+		// TODO make this ^ do the same but in the opposite direction	???
 		return ALLtriangleCount;
+	}
+	
+	public static Line[] ConvertPointToLine(int i, int j, int l) {
+	// TODO must return three Lines that are formed from the point i, j and l in the 1D array.  
+	// I, j and l are numbers for the positions of the points in the array, and they must be converted into three lines, formed by connecting them. 
+		return null;
 	}
 	
 	public static long PossibleTrianglesCount(char oneD[]) {
