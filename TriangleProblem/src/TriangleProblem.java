@@ -34,6 +34,26 @@ public class TriangleProblem {
 	public static Line[] ConvertPointToLine(int i, int j, int l) {
 	// TODO must return three Lines that are formed from the point i, j and l in the 1D array.  
 	// I, j and l are numbers for the positions of the points in the array, and they must be converted into three lines, formed by connecting them. 
+		Line[] triangle = new Line[3];
+		if (i - WIDTH <0 ) {
+			triangle[0].startX = i;
+			triangle[0].startY = 0;
+			triangle[1].startX = i;
+			triangle[1].startY = 0;
+			if(j - WIDTH < 0) {
+				triangle[0].endX = j;
+				triangle[0].endY = 0;
+				triangle[2].startX = j;
+				triangle[2].startY = 0;
+				if (l - WIDTH < 0) {
+					return null;
+				}
+				else {
+					int temp; 
+				}
+			}
+		}
+		
 		return null;
 	}
 	
