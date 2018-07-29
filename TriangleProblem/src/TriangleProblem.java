@@ -49,8 +49,20 @@ public class TriangleProblem {
 					return null;
 				}
 				else {
-					int temp; 
+					int temp = l; 
+					int counter = 0;
+					while (temp > WIDTH) {
+						temp = temp - WIDTH;
+						counter++;
+					}
+					triangle[1].endX = temp;
+					triangle[1].endY = counter;
+					triangle[2].endX = temp;
+					triangle[2].endY = counter;
 				}
+			}
+			else {
+				
 			}
 		}
 		
