@@ -106,12 +106,16 @@ public class TriangleProblem {
 					if (i!=j&&i!=l&&j!=l) {
 						if(Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space) {
 							here:
-							for (Line line : Line.lines){
+							for (int c = 0; c < Line.lines.size(); c++){
 							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
 							// if so PossibleTriangles++;
-								if (Line.Equals(line, ConvertPointToLine(i, j, l)[count])) {
+								if (count == 3) {
+									PossibleTriangles++;
+									break here;
+								}
+								if (Line.Equals(Line.lines.get(c), ConvertPointToLine(i, j, l)[count])) {
 									count++;
-									continue here;
+									c = 0;
 								}
 								else {
 									count = 0;
