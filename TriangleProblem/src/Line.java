@@ -56,11 +56,11 @@ public class Line {
 	}
 
 	// ???? 
-	public static boolean Contains(Line line, int lineStart, int lineEnd) {
-		if ((line.startX==lineStart||line.endX==lineStart)&&(line.startY==lineEnd||line.endY==lineEnd)) {
+	public static boolean Equals(Line line, Line line2) {
+		if ((line.startX==line2.startX||line.endX==line2.startX)&&(line.startX==line2.endX||line.endX==line2.endX)) {
 			return true;
 		}
-		if ((line.startY==lineStart||line.endY==lineStart)&&(line.startX==lineEnd||line.endX==lineEnd)) {
+		if ((line.startY==line2.endY||line.endY==line2.endY)&&(line.startY==line2.startY||line.endY==line2.startY)) {
 			return true;
 		}
 		return false;

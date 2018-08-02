@@ -98,15 +98,26 @@ public class TriangleProblem {
 	public static long PossibleTrianglesCount(char oneD[]) {
 		long PossibleTriangles = 0;
 		int space = WIDTH - 1;
+		int count = 0;
 		for (int i = 0; i < oneD.length; i ++){
 			for (int j = 0; j < oneD.length; j++){
 				for (int l = 0; l < oneD.length; l++) {
+					
 					if (i!=j&&i!=l&&j!=l) {
 						if(Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space) {
+							here:
 							for (Line line : Line.lines){
 							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
 							// if so PossibleTriangles++;
-							continue; }
+								if (Line.Equals(line, ConvertPointToLine(i, j, l)[count])) {
+									count++;
+									continue here;
+								}
+								else {
+									count = 0;
+									break here;
+								}
+							}
 						}
 					}
 				}
