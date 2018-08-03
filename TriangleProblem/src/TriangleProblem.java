@@ -35,6 +35,7 @@ public class TriangleProblem {
 	// TODO must return three Lines that are formed from the point i, j and l in the 1D array.  
 	// I, j and l are numbers for the positions of the points in the array, and they must be converted into three lines, formed by connecting them. 
 		Line[] triangle = new Line[3];
+		InitilizeLineArray(triangle);
 		int temp, counter;
 		if (i - WIDTH <0 ) {
 			triangle[0].startX = i;
@@ -111,6 +112,7 @@ public class TriangleProblem {
 							// if so PossibleTriangles++;
 								if (count == 3) {
 									PossibleTriangles++;
+									count = 0;
 									break here;
 								}
 								if (Line.Equals(Line.lines.get(c), ConvertPointToLine(i, j, l)[count])) {
@@ -144,6 +146,12 @@ public class TriangleProblem {
 		return oneD; 
 	}
 	
+	private static void InitilizeLineArray(Line[] triangle) {
+		for (int i = 0; i < triangle.length; i++) {
+			triangle[i] = new Line(0,0,0,0);
+		}
+	}
+	
 	public static void main (String args[]){
 		char co[][] = MakeTheCoordinateSystem();
 		for (int i = 0; i < HEIGHT; i ++){
@@ -157,11 +165,12 @@ public class TriangleProblem {
 		System.out.print(countT);
 		
 		Line.CreateAllLines();
+		long countPossible = PossibleTrianglesCount(oneD);
 		System.out.println();
 		for (int i = 0; i < Line.lines.size(); i++) {
 			System.out.println(Line.lines.get(i).startX + "," + Line.lines.get(i).startY + ";" + Line.lines.get(i).endX + "," + Line.lines.get(i).endY);
 			System.out.print(i + "  ");
 		}
-		
+		System.out.println("Possible triangles count = " + countPossible);
 	}	
 }
