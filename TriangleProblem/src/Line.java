@@ -38,19 +38,19 @@ public class Line {
 			for (int j = 0; j < RWIDTH; j++){
 				if (j%2!=0&&i%2==0) {
 					lines.add(new Line(j,i,j+1,i+1));
-				} // TODO finish for all lines
+				} 
 				if(j%2==0&&i%2!=0) {
 					lines.add(new Line(j,i,j+1,i+1)); 
 				}
 				
-				if (/*i>0&&*/j%2!=0&&i%2==0) {
+				if (j%2!=0&&i%2==0) {
 					lines.add(new Line(j,i,j+1,i-1)); 
 				}
-				if (/*i>0&&*/j%2==0&&i%2!=0) 
+				if (j%2==0&&i%2!=0) 
 				{
 					lines.add(new Line(j,i,j+1,i-1)); 
 				}
-				
+				// TODO ^ this is not the general case; there are lines formed by these lines that are unaccounted for
 			}
 		}
 	}

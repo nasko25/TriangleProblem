@@ -27,12 +27,11 @@ public class TriangleProblem {
 			if (space ==0) {space = WIDTH-1;}
 			else{space--;}
 		}
-		// TODO make this ^ do the same but in the opposite direction	???
 		return ALLtriangleCount;
 	}
 	
 	public static Line[] ConvertPointToLine(int i, int j, int l) {
-	// TODO must return three Lines that are formed from the point i, j and l in the 1D array.  
+	// returns three Lines that are formed from the point i, j and l in the 1D array.  
 	// I, j and l are numbers for the positions of the points in the array, and they must be converted into three lines, formed by connecting them. 
 		Line[] triangle = new Line[3];
 		InitilizeLineArray(triangle);
