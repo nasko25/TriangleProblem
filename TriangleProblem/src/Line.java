@@ -43,18 +43,38 @@ public class Line {
 					lines.add(new Line(j,i,j+1,i+1)); 
 				}
 				
-				if (j%2!=0&&i%2==0) {
+				if (i>0&&j%2!=0&&i%2==0) {
 					lines.add(new Line(j,i,j+1,i-1)); 
 				}
-				if (j%2==0&&i%2!=0) 
+				if (i>0&&j%2==0&&i%2!=0) 
 				{
 					lines.add(new Line(j,i,j+1,i-1)); 
 				}
 				// TODO ^ this is not the general case; there are lines formed by these lines that are unaccounted for
 			}
 		}
+		
+		// TODO make an array with all the "special lines" in the case above ^ and concatenate them together to form the bigger lines
+		ConcatenateSpecialLines();
 	}
 
+	public static void ConcatenateSpecialLines() {
+		// fill the array list with the diagonal lines
+		ArrayList<Line> tempLine = new ArrayList<>();
+		
+		for (Line line : lines) {
+			if (((line.endX == line.startX + 1)&&(line.endY==line.startY+1))||((line.endX == line.startX + 1) && (line.endY == line.startY - 1))) {
+				tempLine.add(line);
+			}
+		}
+		System.out.println();
+		for (Line line : tempLine) {
+			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
+			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 to both the startX and startY variables in the previous line
+		}
+		System.out.println();
+	}
+	
 	// ???? 
 	public static boolean Equals(Line line, Line line2) {
 		if ((line.startX==line2.startX||line.endX==line2.startX)&&(line.startX==line2.endX||line.endX==line2.endX)) {
