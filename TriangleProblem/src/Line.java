@@ -76,7 +76,7 @@ public class Line {
 			counter++;
 			} // TODO what is the special case
 			if (SpecialCase(line)){
-						while (specialCounter <= RWIDTH - (line.startX+line.startY+2) - 13) {
+						while (specialCounter <= RWIDTH - (line.startX+line.startY+2)) {
 							lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
 							specialCounter++;
 				}
