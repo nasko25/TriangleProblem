@@ -61,9 +61,9 @@ public class Line {
 	public static void ConcatenateSpecialLines() {
 		// fill the array list with the diagonal lines
 		ArrayList<Line> tempLine = new ArrayList<>();
-		int counter = 2;
+		int counter = 2, specialCounter = 2;
 		for (Line line : lines) {
-			if (((line.endX == line.startX + 1)&&(line.endY==line.startY+1))||((line.endX == line.startX + 1) && (line.endY == line.startY - 1))) {
+			if (((line.endX == line.startX + 1)&&(line.endY==line.startY+1))) {
 				tempLine.add(line);
 			}
 		}
@@ -71,13 +71,28 @@ public class Line {
 		for (Line line : tempLine) {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 to both the startX and startY variables in the previous line
-			while (counter < RWIDTH - (line.startX+3)) { // sounds good doesn't work
+			while (counter <= RWIDTH - (line.startX+line.startY) && !SpecialCase(line)) {
 			lines.add(new Line(line.startX, line.startY, line.endX + counter, line.endY +counter));
 			counter++;
+			} // TODO what is the special case
+			if (SpecialCase(line)){
+						while (specialCounter <= RWIDTH - (line.startX+line.startY+2) - 13) {
+							lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
+							specialCounter++;
+				}
 			}
 			counter = 2;
+			specialCounter = 2;
 		}
 		System.out.println();
+	}       // TODO ^ function does not account for (line.endX == line.startX + 1) && (line.endY == line.startY - 1) 
+	
+	// if the line is the first the while condition counter < RWIDTH - (line.startX+2) would not work
+	public static boolean SpecialCase(Line line) {
+			if (line.startX == 1) { // then it is the first line
+				return true;
+			}
+			return false;
 	}
 	
 	// ???? 
