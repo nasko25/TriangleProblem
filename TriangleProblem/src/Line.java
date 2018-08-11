@@ -61,7 +61,7 @@ public class Line {
 	public static void ConcatenateSpecialLines() {
 		// fill the array list with the diagonal lines
 		ArrayList<Line> tempLine = new ArrayList<>();
-		
+		int counter = 2;
 		for (Line line : lines) {
 			if (((line.endX == line.startX + 1)&&(line.endY==line.startY+1))||((line.endX == line.startX + 1) && (line.endY == line.startY - 1))) {
 				tempLine.add(line);
@@ -71,6 +71,11 @@ public class Line {
 		for (Line line : tempLine) {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 to both the startX and startY variables in the previous line
+			while (counter < RWIDTH - (line.startX+3)) { // sounds good doesn't work
+			lines.add(new Line(line.startX, line.startY, line.endX + counter, line.endY +counter));
+			counter++;
+			}
+			counter = 2;
 		}
 		System.out.println();
 	}
