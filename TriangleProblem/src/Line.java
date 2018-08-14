@@ -90,12 +90,21 @@ public class Line {
 	// if the line is the first the while condition counter < RWIDTH - (line.startX+2) would not work
 	// first on the first; first 2 on the second; first 2 on the third; first 3 on the 4th and 5th; first 4 on the 6th and 7th; first 5 on the 8th and 9th; first 6 on the 10th and 11th; first 7 on the 12th
 	public static boolean SpecialCase(Line line) {
-			if (line.startX == 1) { // then it is the first line
+			if (line.startX == 1 || line.startX == 0) { // then it is the first line
 				return true;
 			}
-			else if ((line.endY == 2 && line.startX == 0) || (line.endY == 2 && line.startX == 2) || (line.endY == 3 && line.startX == 0) || (line.endY == 3 && line.startX == 2)) {
+			else if ((line.endY == 2 && line.startX == 2) || (line.endY == 3 && line.startX == 3)) {
 				return true;
 			}
+			else if ((line.endY == 4 && line.startX == 2) || (line.endY == 4 && line.startX == 4)) { 
+				return true;
+			}
+			else if ((line.endY == 5 && line.startX == 3) || (line.endY == 5 && line.startX == 5)) { 
+				return true;
+			}
+			else if ((line.endY == 6 && line.startX == 2) || (line.endY == 6 && line.startX == 4)|| (line.endY == 6 && line.startX == 6)) { 
+				return true;
+			} // if (line.startX <= line.endY) {return true;} ???
 			// TODO finish the special case
 			return false;
 	}
