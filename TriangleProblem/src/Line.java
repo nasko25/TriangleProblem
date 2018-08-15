@@ -72,15 +72,15 @@ public class Line {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 to both the startX and startY variables in the previous line
 			while (counter <= RWIDTH - (line.endX) && !SpecialCase(line)) {
-			lines.add(new Line(line.startX, line.startY, line.endX + counter, line.endY +counter));
+			lines.add(new Line(line.startX, line.startY, line.startX + counter, line.startY +counter)); // because counter starts from 2
 			counter++;
-			} // TODO what is the special case
-			if (SpecialCase(line)){
+			} // TODO what is the special case an what to do in it
+			/* if (SpecialCase(line)){
 						while (specialCounter <= RWIDTH - (line.startX+line.startY+2)) {
-							lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
+							// lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
 							specialCounter++;
 				}
-			}
+			} */
 			counter = 2;
 			specialCounter = 2;
 		}
@@ -90,21 +90,7 @@ public class Line {
 	// if the line is the first the while condition counter < RWIDTH - (line.startX+2) would not work
 	// first on the first; first 2 on the second; first 2 on the third; first 3 on the 4th and 5th; first 4 on the 6th and 7th; first 5 on the 8th and 9th; first 6 on the 10th and 11th; first 7 on the 12th
 	public static boolean SpecialCase(Line line) {
-			if (line.startX == 1 || line.startX == 0) { // then it is the first line
-				return true;
-			}
-			else if ((line.endY == 2 && line.startX == 2) || (line.endY == 3 && line.startX == 3)) {
-				return true;
-			}
-			else if ((line.endY == 4 && line.startX == 2) || (line.endY == 4 && line.startX == 4)) { 
-				return true;
-			}
-			else if ((line.endY == 5 && line.startX == 3) || (line.endY == 5 && line.startX == 5)) { 
-				return true;
-			}
-			else if ((line.endY == 6 && line.startX == 2) || (line.endY == 6 && line.startX == 4)|| (line.endY == 6 && line.startX == 6)) { 
-				return true;
-			} // if (line.startX <= line.endY) {return true;} ???
+			 if (line.startX <= line.endY) { return true; }
 			// TODO finish the special case
 			return false;
 	}

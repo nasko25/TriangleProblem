@@ -121,7 +121,7 @@ public class TriangleProblem {
 								else {
 									count = 0;
 									break here;
-								}
+								} // TODO this else is wrong. 
 							}
 						}
 					}
