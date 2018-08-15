@@ -1,4 +1,5 @@
 public class TriangleProblem {
+	/// 7860 
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {
@@ -97,12 +98,13 @@ public class TriangleProblem {
 	
 	public static long PossibleTrianglesCount(char oneD[]) {
 		long PossibleTriangles = 0;
-		int space = WIDTH - 1;
+		int space = WIDTH ; // -1 ????? TODO consider
 		int count = 0;
 		for (int i = 0; i < oneD.length; i ++){
 			for (int j = 0; j < oneD.length; j++){
 				for (int l = 0; l < oneD.length; l++) {
-					
+					count = 0;
+					Line points[] = ConvertPointToLine(i, j, l);
 					if (i!=j&&i!=l&&j!=l) {
 						if(Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space) {
 							here:
@@ -114,14 +116,11 @@ public class TriangleProblem {
 									count = 0;
 									break here;
 								}
-								if (Line.Equals(Line.lines.get(c), ConvertPointToLine(i, j, l)[count])) {
+								if (Line.Equals(Line.lines.get(c), points[count])) {
 									count++;
 									c = 0;
 								}
-								else {
-									count = 0;
-									break here;
-								} // TODO this else is wrong. 
+								
 							}
 						}
 					}

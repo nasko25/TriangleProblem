@@ -75,12 +75,12 @@ public class Line {
 			lines.add(new Line(line.startX, line.startY, line.startX + counter, line.startY +counter)); // because counter starts from 2
 			counter++;
 			} // TODO what is the special case an what to do in it
-			/* if (SpecialCase(line)){
-						while (specialCounter <= RWIDTH - (line.startX+line.startY+2)) {
-							// lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
-							specialCounter++;
-				}
-			} */
+				if (SpecialCase(line)){
+							while (specialCounter <= RWIDTH - (line.startX+line.startY+2)) {
+								// lines.add(new Line(line.startX, line.startY, line.endX + specialCounter, line.endY + specialCounter));
+								specialCounter++;
+					}
+				} 
 			counter = 2;
 			specialCounter = 2;
 		}
@@ -97,10 +97,7 @@ public class Line {
 	
 	// ???? 
 	public static boolean Equals(Line line, Line line2) {
-		if ((line.startX==line2.startX||line.endX==line2.startX)&&(line.startX==line2.endX||line.endX==line2.endX)) {
-			return true;
-		}
-		if ((line.startY==line2.endY||line.endY==line2.endY)&&(line.startY==line2.startY||line.endY==line2.startY)) {
+		if ((line.startX==line2.startX)&&(line.endX==line2.endX)&&(line.endY==line2.endY)&&(line.startY==line2.startY)) {
 			return true;
 		}
 		return false;
