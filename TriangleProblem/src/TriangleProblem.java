@@ -1,5 +1,5 @@
 public class TriangleProblem {
-	/// 7860 
+	/// 7860       it is 1534
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {
@@ -12,7 +12,7 @@ public class TriangleProblem {
 		return co;
 	}
 
-	private static long TriangleCount(char []oneD){
+/*	private static long TriangleCount(char []oneD){
 		long ALLtriangleCount = 0;
 		int space = WIDTH - 1; // between two of the three dots (first and last)
 		for (int i = 0; i < oneD.length; i ++){
@@ -30,7 +30,7 @@ public class TriangleProblem {
 		}
 		return ALLtriangleCount;
 	}
-	
+	*/
 	public static Line[] ConvertPointToLine(int i, int j, int l) {
 	// returns three Lines that are formed from the point i, j and l in the 1D array.  
 	// I, j and l are numbers for the positions of the points in the array, and they must be converted into three lines, formed by connecting them. 
@@ -106,8 +106,8 @@ public class TriangleProblem {
 					count = 0;
 					Line points[] = ConvertPointToLine(i, j, l);
 					if (i!=j&&i!=l&&j!=l) {
-						if(Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space) {
-							here:
+						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0&&Math.abs(i-l)%16!=0&&Math.abs(l-j)%16!=0)) {
+							here: // TODO is this check valid ^ ??? Also, think how to optimize it.
 							for (int c = 0; c < Line.lines.size(); c++){
 							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
 							// if so PossibleTriangles++;
@@ -159,8 +159,8 @@ public class TriangleProblem {
 		System.out.println();
 		}
 		char oneD[] = ConvertTo1D(co);
-		long countT = TriangleCount(oneD);
-		System.out.print(countT);
+		// long countT = TriangleCount(oneD);
+		// System.out.print(countT);
 		
 		Line.CreateAllLines();
 		long countPossible = PossibleTrianglesCount(oneD);
