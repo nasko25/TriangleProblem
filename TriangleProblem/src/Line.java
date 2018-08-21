@@ -96,13 +96,13 @@ public class Line {
 		for (Line line : tempLine) {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 and -1 the startX and startY variables in the previous line
-			while (counter <= line.endX && !SpecialCaseRight(line)) { // < counter???
-			lines.add(new Line(line.startX, line.startY, line.startX + counter, line.startY + counter)); // because counter starts from 2
+			while (counter <= line.endX && !SpecialCaseRight(line) && line.startX - counter >= 0) { // < counter???
+			lines.add(new Line(line.startX, line.startY, line.startX - counter, line.startY + counter)); // because counter starts from 2
 			counter++;
 			} // TODO what is the special case an what to do in it
 				if (SpecialCaseRight(line)){
-							while (specialCounter <= RHEIGHT - (line.endY)) {
-								lines.add(new Line(line.startX, line.startY, line.startX + specialCounter, line.startY + specialCounter));
+							while (specialCounter <= RHEIGHT - (line.endY) && line.startX - specialCounter >= 0) {
+								lines.add(new Line(line.startX, line.startY, line.startX - specialCounter, line.startY + specialCounter));
 								specialCounter++; // TODO I might need to change some RWIDTHs and RHEIGHTS to normal WIDTH and HEIGHT and is it line.startX + specialCounter or -
 							}
 					}
