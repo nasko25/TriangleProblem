@@ -1,5 +1,5 @@
 public class TriangleProblem {
-	/// 7860       it is 1145
+	/// 7860       it is 2178
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {
@@ -106,7 +106,7 @@ public class TriangleProblem {
 					count = 0;
 					Line points[] = ConvertPointToLine(i, j, l);
 					if (i!=j&&i!=l&&j!=l) {
-						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0&&Math.abs(i-l)%16!=0&&Math.abs(l-j)%16!=0)) {
+						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0||Math.abs(i-l)%16!=0||Math.abs(l-j)%16!=0)) {
 							here: // TODO is this check valid ^ ??? Also, think how to optimize it.
 							for (int c = 0; c < Line.lines.size(); c++){
 							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
