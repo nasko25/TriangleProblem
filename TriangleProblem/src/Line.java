@@ -24,7 +24,7 @@ public class Line {
 				
 					/*else */ if (j<RWIDTH-counter) {
 						lines.add(new Line(j,i,(j+counter), i)); // keep in mind that line 1, 2, 3, 4 is the
-						// same line as 3, 4, 1, 2
+						// same line as 2, 1, 4, 3
 					}
 					if (i<RHEIGHT-counter) {
 						lines.add(new Line(j,i,j,(i+counter)));
@@ -128,6 +128,9 @@ public class Line {
 	// ???? 
 	public static boolean Equals(Line line, Line line2) {
 		if ((line.startX==line2.startX)&&(line.endX==line2.endX)&&(line.endY==line2.endY)&&(line.startY==line2.startY)) {
+			return true;
+		}
+		if ((line.startX==line2.startY)&&(line.endX==line2.endY)&&(line.startY==line2.startX)&&(line.endY==line2.endX)) {
 			return true;
 		}
 		return false;

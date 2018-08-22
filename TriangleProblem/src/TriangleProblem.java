@@ -1,5 +1,5 @@
 public class TriangleProblem {
-	/// 7860       it is 2227
+	/// 7860       it is 2969
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {
@@ -99,12 +99,12 @@ public class TriangleProblem {
 	public static long PossibleTrianglesCount(char oneD[]) {
 		long PossibleTriangles = 0;
 		int space = WIDTH ; // -1 ????? TODO consider
-		int count = 0;
+		int count = 0; Line points[];
 		for (int i = 0; i < oneD.length; i ++){
 			for (int j = 0; j < oneD.length; j++){
 				for (int l = 0; l < oneD.length; l++) {
 					count = 0;
-					Line points[] = ConvertPointToLine(i, j, l);
+					points = ConvertPointToLine(i, j, l);
 					if (i!=j&&i!=l&&j!=l) {
 						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0||Math.abs(i-l)%16!=0||Math.abs(l-j)%16!=0)) {
 							here: // TODO is this check valid ^ ??? Also, think how to optimize it.
