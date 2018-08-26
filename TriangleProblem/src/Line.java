@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+// TODO count all the lines; are they 3058?
 public class Line {
 	public int startX,endX,startY,endY;
 	private static final int RWIDTH = TriangleProblem.WIDTH-1, RHEIGHT = TriangleProblem.HEIGHT-1; // R was for relative in this class

@@ -37,7 +37,7 @@ public class TriangleProblem {
 		Line[] triangle = new Line[3];
 		InitilizeLineArray(triangle);
 		int temp, counter;
-		if (i - WIDTH <0 ) {
+		if (i - WIDTH < 0) {
 			triangle[0].startX = i;
 			triangle[0].startY = 0;
 			triangle[1].startX = i;
@@ -105,8 +105,8 @@ public class TriangleProblem {
 				for (int l = 0; l < oneD.length; l++) {
 					count = 0;
 					points = ConvertPointToLine(i, j, l);
-					if (i!=j&&i!=l&&j!=l) {
-						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0||Math.abs(i-l)%16!=0||Math.abs(l-j)%16!=0)) {
+					if (i!=j&&i!=l&&j!=l) {																																	// This should fix when the points are in one line with reference to the (0,0) coordinate.																
+						if((Math.abs(i-j)>=space||Math.abs(i-l)>=space||Math.abs(l-j)>=space)&&(Math.abs(i-j)%16!=0||Math.abs(i-l)%16!=0||Math.abs(l-j)%16!=0)&&(((Math.abs(points[0].startX-points[1].startX)==Math.abs(points[0].startY-points[1].startY)))||(Math.abs(points[0].startX-points[2].startX)==Math.abs(points[0].startY-points[2].startY))||(Math.abs(points[1].startX-points[2].startX)==Math.abs(points[1].startY-points[2].startY)))) {
 							here: // TODO is this check valid ^ ??? Also, think how to optimize it.
 							for (int c = 0; c < Line.lines.size(); c++){
 							// check if line.startX, line.endX, line.startY and line.endY are actually lines that the triangles create
@@ -124,6 +124,7 @@ public class TriangleProblem {
 							}
 						}
 					}
+					count = 0;
 				}
 			}
 			if (space ==0) {space = WIDTH-1;}
