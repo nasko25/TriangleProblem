@@ -164,6 +164,7 @@ public class TriangleProblem {
 		// System.out.print(countT);
 		
 		Line.CreateAllLines();
+		System.out.print(" the lines are " + Line.lines.size());
 		long countPossible = PossibleTrianglesCount(oneD);
 		System.out.println();
 		for (int i = 0; i < Line.lines.size(); i++) {

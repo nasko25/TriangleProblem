@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-// TODO count all the lines; are they 3058?
+// TODO there should be more lines
 public class Line {
 	public int startX,endX,startY,endY;
 	private static final int RWIDTH = TriangleProblem.WIDTH-1, RHEIGHT = TriangleProblem.HEIGHT-1; // R was for relative in this class
@@ -110,7 +110,6 @@ public class Line {
 			counter = 2;
 			specialCounter = 2;
 		}
-	       // TODO ^ function is not ready for (line.endX == line.startX + 1) && (line.endY == line.startY - 1) 
 	
 	// if the line is the first the while condition counter < RWIDTH - (line.startX+2) would not work
 	// first on the first; first 2 on the second; first 2 on the third; first 3 on the 4th and 5th; first 4 on the 6th and 7th; first 5 on the 8th and 9th; first 6 on the 10th and 11th; first 7 on the 12th
