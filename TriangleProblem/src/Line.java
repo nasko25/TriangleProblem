@@ -14,32 +14,32 @@ public class Line {
 	}
 
 	public static void CreateAllLines() {
-		int counter = 1;
-		while (counter!=TriangleProblem.WIDTH/*/2*/) {
-			for (int i = 0; i < RHEIGHT; i++){
-				for (int j = 0; j < RWIDTH; j++){
+		int counter = 0, count = 1;
+		while (counter!=RWIDTH/*/2*/) {
+			for (int i = 0; i <= RHEIGHT; i++){
+				for (int j = 0; j <= RWIDTH; j++){
 					/*if (j<TriangleProblem.WIDTH-1)
 					lines.add(new Line(j, i, (j+1), i));
 					 */
 				
 					/*else */ if (j<RWIDTH-counter) {
-						lines.add(new Line(j,i,(j+counter), i)); // keep in mind that line 1, 2, 3, 4 is the
+						lines.add(new Line(j,i,(j+count), i)); // keep in mind that line 1, 2, 3, 4 is the
 						// same line as 2, 1, 4, 3
 					}
 					if (i<RHEIGHT-counter) {
-						lines.add(new Line(j,i,j,(i+counter)));
+						lines.add(new Line(j,i,j,(i+count)));
 					} // ???
-					
+					System.out.println(i);
 				}
 			}
-		counter++;
+		counter++; count++;
 		}
-		for (int i = 0; i < RHEIGHT; i++){
+		for (int i = 0; i <= RHEIGHT; i++){
 			for (int j = 0; j < RWIDTH; j++){
-				if (j%2!=0&&i%2==0) {
+				if (j%2!=0&&i%2==0&&i!=RHEIGHT) {
 					lines.add(new Line(j,i,j+1,i+1));
 				} 
-				if(j%2==0&&i%2!=0) {
+				if(j%2==0&&i%2!=0&&i!=RHEIGHT) {
 					lines.add(new Line(j,i,j+1,i+1)); 
 				}
 				
