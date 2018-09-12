@@ -54,7 +54,8 @@ public class Line {
 			}
 		}
 		
-		// TODO make an array with all the "special lines" in the case above ^ and concatenate them together to form the bigger lines
+		//  make an array with all the "special lines" in the case above ^ and concatenate them together to form the bigger lines
+		// TODO this counting is wrong; 337 must be 800
 		ConcatenateSpecialLines();
 	}
 
