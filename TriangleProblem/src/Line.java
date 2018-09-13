@@ -55,7 +55,6 @@ public class Line {
 		}
 		
 		//  make an array with all the "special lines" in the case above ^ and concatenate them together to form the bigger lines
-		// TODO this counting is wrong; 337 must be 800
 		ConcatenateSpecialLines();
 	}
 
@@ -72,12 +71,12 @@ public class Line {
 		for (Line line : tempLine) {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 to both the startX and startY variables in the previous line
-			while (counter <= RWIDTH - (line.endX) && !SpecialCase(line)) {
+			while (counter <= TriangleProblem.WIDTH - (line.endX) && !SpecialCase(line)) {
 			lines.add(new Line(line.startX, line.startY, line.startX + counter, line.startY +counter)); // because counter starts from 2
 			counter++;
 			} // TODO what is the special case an what to do in it
 				if (SpecialCase(line)){
-							while (specialCounter <= RWIDTH - (line.endY+2)) {
+							while (specialCounter <= TriangleProblem.WIDTH - (line.endY+2)) {
 								lines.add(new Line(line.startX, line.startY, line.startX + specialCounter, line.startY + specialCounter));
 								specialCounter++;
 					}
@@ -87,7 +86,7 @@ public class Line {
 		}
 		System.out.println();
 		System.out.println();
-		
+		// TODO this is not counting all the lines
 		tempLine.clear();
 		for (Line line : lines) {
 			if (((line.endX == line.startX + 1)&&(line.endY==line.startY-1))) {
@@ -98,19 +97,22 @@ public class Line {
 			System.out.println("startX: " + line.startX + " startY: " + line.startY + " endX: " + line.endX + " endY: " + line.endY);
 			// concatenate and save every line (in the lines ArrayList) made up of 2 or more lines, whose coordinates are +1 and -1 the startX and startY variables in the previous line
 			while (counter <= line.endX && !SpecialCaseRight(line) && line.startX - counter >= 0) { // < counter???
-			lines.add(new Line(line.startX, line.startY, line.startX - counter, line.startY + counter)); // because counter starts from 2
+			lines.add(new Line(line.endX, line.endY, line.endX - counter, line.endY + counter)); // because counter starts from 2      
+			// ^^^ TODO should endX and endY be substituted with startX and startY(as they were before)???
 			counter++;
 			} // TODO what is the special case an what to do in it
 				if (SpecialCaseRight(line)){
-							while (specialCounter <= RHEIGHT - (line.endY) && line.startX - specialCounter >= 0) {
-								lines.add(new Line(line.startX, line.startY, line.startX - specialCounter, line.startY + specialCounter));
+							while (specialCounter <= TriangleProblem.HEIGHT - (line.endY) && line.startX - specialCounter >= 0) {
+								lines.add(new Line(line.endX, line.endY, line.endX - specialCounter, line.endY + specialCounter));
 								specialCounter++; // TODO I might need to change some RWIDTHs and RHEIGHTS to normal WIDTH and HEIGHT and is it line.startX + specialCounter or -
 							}
 					}
-				} 
 			counter = 2;
 			specialCounter = 2;
 		}
+	
+	} 
+
 	
 	// if the line is the first the while condition counter < RWIDTH - (line.startX+2) would not work
 	// first on the first; first 2 on the second; first 2 on the third; first 3 on the 4th and 5th; first 4 on the 6th and 7th; first 5 on the 8th and 9th; first 6 on the 10th and 11th; first 7 on the 12th
@@ -121,7 +123,7 @@ public class Line {
 	}
 	
 	public static boolean SpecialCaseRight(Line line) {
-		if (line.endX+line.endY>=RHEIGHT) { return true; }
+		if (line.endX+line.endY>=TriangleProblem.HEIGHT) { return true; }
 		return false;
 	}
 	
