@@ -86,7 +86,7 @@ public class Line {
 		}
 		System.out.println();
 		System.out.println();
-		// TODO this is not counting all the lines
+		// TODO this is not counting all the lines; count all the lines
 		tempLine.clear();
 		for (Line line : lines) {
 			if (((line.endX == line.startX + 1)&&(line.endY==line.startY-1))) {
@@ -102,7 +102,7 @@ public class Line {
 			counter++;
 			} // TODO what is the special case an what to do in it
 				if (SpecialCaseRight(line)){
-							while (specialCounter <= TriangleProblem.HEIGHT - (line.endY) && line.startX - specialCounter >= 0) {
+							while (specialCounter <= TriangleProblem.HEIGHT - (line.endY) && line.endY != 12) {
 								lines.add(new Line(line.endX, line.endY, line.endX - specialCounter, line.endY + specialCounter));
 								specialCounter++; // TODO I might need to change some RWIDTHs and RHEIGHTS to normal WIDTH and HEIGHT and is it line.startX + specialCounter or -
 							}

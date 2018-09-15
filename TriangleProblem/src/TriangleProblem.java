@@ -1,5 +1,5 @@
 public class TriangleProblem {
-	/// 7860       it is 12495
+	/// 7860       it is 12365
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {
@@ -98,7 +98,7 @@ public class TriangleProblem {
 	
 	public static long PossibleTrianglesCount(char oneD[]) {
 		long PossibleTriangles = 0;
-		int space = WIDTH ; // -1 ????? TODO consider
+		int space = WIDTH; // -1 ????? TODO consider
 		int count = 0; Line points[];
 		for (int i = 0; i < oneD.length; i ++){
 			for (int j = 0; j < oneD.length; j++){
@@ -127,7 +127,7 @@ public class TriangleProblem {
 					count = 0;
 				}
 			}
-			if (space ==0) {space = WIDTH-1;}
+			if (space ==1) {space = WIDTH; }// WIDTH - 1???
 			else{space--;}
 		}
 		return PossibleTriangles;
