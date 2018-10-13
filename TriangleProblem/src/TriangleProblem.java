@@ -1,5 +1,5 @@
 public class TriangleProblem {
-	/// 7860       it is 12365
+	/// 7860       it is 5536
 	public static final int HEIGHT = 14;
 	public static final int WIDTH = 16;
 	private static char[][] MakeTheCoordinateSystem() {

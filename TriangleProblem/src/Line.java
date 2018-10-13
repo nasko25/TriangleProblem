@@ -132,9 +132,14 @@ public class Line {
 		if ((line.startX==line2.startX)&&(line.endX==line2.endX)&&(line.endY==line2.endY)&&(line.startY==line2.startY)) {
 			return true;
 		}
-		if ((line.startX==line2.startY)&&(line.endX==line2.endY)&&(line.startY==line2.startX)&&(line.endY==line2.endX)) {
+		/* it should not need to count the reversed lines (and this is also a wrong way to do so)
+		 * if ((line.startX==line2.startY)&&(line.endX==line2.endY)&&(line.startY==line2.startX)&&(line.endY==line2.endX)) {
 			return true;
-		}
+		} 
+		the right way would be 
+		if ((line.startX==line2.endX)&&(line.endX==line2.startX)&&(line.startY==line2.endY)&&(line.endY==line2.startY)) {
+			return true;
+		*/
 		return false;
 	}
 
