@@ -140,6 +140,15 @@ public class Line {
 		if ((line.startX==line2.endX)&&(line.endX==line2.startX)&&(line.startY==line2.endY)&&(line.endY==line2.startY)) {
 			return true;
 		*/
+		// TODO this is wrong, and needs fixing
+		if(((line.startX<line.endX && line.startY < line.endY) || (line2.startX<line2.endX && line2.startX < line2.endY))&&((line.startX>line.endX && line.startY < line.endY) || (line2.startX>line2.endX && line2.startX < line2.endY))){
+			if ((line.startX==line2.endX)&&(line.endX==line2.startX)&&(line.endY==line2.startY)&&(line.startY==line2.endY))			
+			{
+				return true;
+			}
+		
+		}
+		
 		return false;
 	}
 
