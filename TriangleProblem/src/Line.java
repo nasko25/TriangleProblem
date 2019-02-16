@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 // TODO there should be more lines
+// TODO threading
 public class Line {
 	public int startX,endX,startY,endY;
 	private static final int RWIDTH = TriangleProblem.WIDTH-1, RHEIGHT = TriangleProblem.HEIGHT-1; // R was for relative in this class
@@ -127,9 +129,51 @@ public class Line {
 		return false;
 	}
 	
+	public static ArrayList<Line> fillList(Line key, HashMap<Line, ArrayList<Line>> map, Line toAdd) {
+		ArrayList<Line> list;
+		if (map.get(key) == null) {
+			list = new ArrayList<>();
+			list.add(toAdd);
+			map.put(key, list);
+		}
+		else {
+			list = map.get(key);
+			map.put(key, list);
+		}
+		return list;
+			
+	}
+	
+	public static boolean newCombination(Line line1, HashMap<Line, ArrayList<Line>> map, Line line2) {
+		if (map.get(line1) == null && map.get(line2) == null) {
+			return true;
+		}
+		else if (lineInList(line2, map.get(line1))) {
+			map.get(line2).add(line1);
+			return false;
+		}
+		else if (lineInList(line1, map.get(line2))) {
+			map.get(line1).add(line2);
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean lineInList(Line line, ArrayList<Line> list) {
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).startX == line.startX && list.get(i).endX == line.endX && list.get(i).startY == line.startY && list.get(i).endY == line.endY){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	// ???? 
 	public static boolean Equals(Line line, Line line2) {
-		if ((line.startX==line2.startX)&&(line.endX==line2.endX)&&(line.endY==line2.endY)&&(line.startY==line2.startY)) {
+		HashMap<Line, ArrayList<Line>> usedCombinations = new HashMap<>();
+		ArrayList<Line> dictionary;
+		if ((line.startX==line2.startX)&&(line.endX==line2.endX)&&(line.endY==line2.endY)&&(line.startY==line2.startY) && newCombination(line, usedCombinations, line2)) {
+			dictionary = fillList(line, usedCombinations, line2);
 			return true;
 		}
 		/* it should not need to count the reversed lines (and this is also a wrong way to do so)
@@ -141,12 +185,17 @@ public class Line {
 			return true;
 		*/
 		// TODO this is wrong, and needs fixing
-		if(((line.startX<line.endX && line.startY < line.endY) || (line2.startX<line2.endX && line2.startX < line2.endY))&&((line.startX>line.endX && line.startY < line.endY) || (line2.startX>line2.endX && line2.startX < line2.endY))){
+		/* if(((line.startX<line.endX && line.startY < line.endY) || (line2.startX<line2.endX && line2.startX < line2.endY))&&((line.startX>line.endX && line.startY < line.endY) || (line2.startX>line2.endX && line2.startX < line2.endY))){
 			if ((line.startX==line2.endX)&&(line.endX==line2.startX)&&(line.endY==line2.startY)&&(line.startY==line2.endY))			
 			{
 				return true;
 			}
 		
+		}*/
+		
+		if ((line.startX==line2.endX)&&(line.endX==line2.startX)&&(line.startY==line2.endY)&&(line.endY==line2.startY)&& newCombination(line, usedCombinations, line2)) {
+			dictionary = fillList(line, usedCombinations, line2);
+			return true;
 		}
 		
 		return false;
